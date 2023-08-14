@@ -163,6 +163,7 @@ waterfall.forward = treeHouse
 
 treeHouse.backward = waterfall
 
+//functions for dynamically changing the image and text on screen
 function changeImgTo (newImg) {
     const oldImg = document.getElementById("view");
     oldImg.src = newImg;
@@ -221,7 +222,7 @@ document.addEventListener("keydown", function (event) {
 
 })   
 
-
+//doesn't work, but was trying to remove the title text once an up arrow key is hit for the first time. could potentially do this when the key goes up
 // if (currentPage === portal) {
 //     document.getElementById("welcome").remove()
 //     document.getElementById("choose").remove()
