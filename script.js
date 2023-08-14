@@ -1,58 +1,42 @@
-// const h2 = document.createElement("h2");
-// h2.textContent = "This content added by JavaScript";
-
-// document.querySelector("body").appendChild(h2);
-
-function changeImgTo (newImg) {
-    const oldImg = document.getElementById("view");
-    oldImg.src = newImg;
+//Declares all places as objects:
+const startingPath = {
+    visited: false,
+    img: "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg",
+    text1: "Today you've decided to take a walk in a local forest. You've been here many times before, but today seems different. The forest seems greener. The birds are singing and even crossing your path. Press the up arrow key to keep walking.",
+    text2: "You've returned to a familiar path. I wonder if you'll ever see that portal again. Press the up arrow key to return to the portal.",
 }
-
-function changeTextTo (newText) {
-    const description = document.getElementById("description");
-    const oldText = document.getElementById("text");
-    description.removeChild(oldText);
-
-    const p = document.createElement('p');
-    p.setAttribute("id", "text");
-    p.textContent = newText;
-    document.getElementById("description").append(p);
-}
+let currentPage = startingPath;
 
 const portal = {
+    visited: false,
     img: "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg",
-    text: "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue.",
-    // backward: startingPath,
-    // forward: forkedPath,
-    // left: ,
-    // right: ,
+    text1: "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue.",
+    text2: "Press the up arrow key to re-enter the portal. Press the down arrow key to go home."
 }
-
-const startingPath = {
-    img: "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg",
-    text: "You've made it back to a familiar path. I wonder if you'll ever see that portal again.",
-    // backward: ,
-    forward: portal,
-    // left: ,
-    // right: ,
+const forkedPath = {
+    visited: false,
+    img: "https://jkroots.com/wp-content/uploads/2018/10/enchanted_forest_2_by_jkroots-daxl6xh.jpg",
+    text1: "text",
+    text2: "text",
 }
-
-
-const currentPage = startingPath
-
-
-
-
-
-// const portalImg = "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg"
-// const portalText = "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue."
-
-const forkedPath = "https://jkroots.com/wp-content/uploads/2018/10/enchanted_forest_2_by_jkroots-daxl6xh.jpg";
-
-const coveredPath = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/65282199-9f85-4daa-bcd6-de2f615bcca7/dfmb909-a1146529-df3c-4ad2-885f-89c56c667358.png/v1/fit/w_828,h_828,q_70,strp/path_through_an_enchanted_forest_version_1_by_pm_artistic_dfmb909-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzY1MjgyMTk5LTlmODUtNGRhYS1iY2Q2LWRlMmY2MTViY2NhN1wvZGZtYjkwOS1hMTE0NjUyOS1kZjNjLTRhZDItODg1Zi04OWM1NmM2NjczNTgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.60xIH9oaHILuKa4qbFpYtgunL2htU-llQmqB6hEhf6k";
-const treeVillage = "https://wallpapers.com/images/hd/mystical-forest-1920-x-1200-zggop07wd2gh8vmg.jpg";
-
-const bridge = "https://w0.peakpx.com/wallpaper/76/291/HD-wallpaper-enchanted-forest-art-forest-river-fantasy.jpg";
+const coveredPath = {
+    visited: false,
+    img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/65282199-9f85-4daa-bcd6-de2f615bcca7/dfmb909-a1146529-df3c-4ad2-885f-89c56c667358.png/v1/fit/w_828,h_828,q_70,strp/path_through_an_enchanted_forest_version_1_by_pm_artistic_dfmb909-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzY1MjgyMTk5LTlmODUtNGRhYS1iY2Q2LWRlMmY2MTViY2NhN1wvZGZtYjkwOS1hMTE0NjUyOS1kZjNjLTRhZDItODg1Zi04OWM1NmM2NjczNTgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.60xIH9oaHILuKa4qbFpYtgunL2htU-llQmqB6hEhf6k",
+    text1: "text",
+    text2: "text",
+}
+const treeVillage = {
+    visited: false,
+    img: "https://wallpapers.com/images/hd/mystical-forest-1920-x-1200-zggop07wd2gh8vmg.jpg",
+    text1: "text",
+    text2: "text",
+}
+const bridge = {
+    visited: false,
+    img: "https://w0.peakpx.com/wallpaper/76/291/HD-wallpaper-enchanted-forest-art-forest-river-fantasy.jpg",
+    text1: "text",
+    text2: "text",
+}
 
 const firefly = "https://aiartshop.com/cdn/shop/products/magical-forest-01-ai-painting-917.webp?v=1677621643";
 const fireflyTree = "https://www.bhmpics.com/downloads/enchanted-forest-desktop-wallpaper-/25.1582033499_enchanted-forest_vsthemes_ru-21.webp";
@@ -71,29 +55,86 @@ const swampVillage = "https://e0.pxfuel.com/wallpapers/609/778/desktop-wallpaper
 const swampCircle = "https://images.nightcafe.studio/jobs/8qWAPhnH1CBqk9pBaFh1/8qWAPhnH1CBqk9pBaFh1--2--9kc8q_2x.jpg?tr=w-1600,c-at_max";
 const swampRuins = "https://images.nightcafe.studio/jobs/pWlflDYguTfYUdbhhKjN/pWlflDYguTfYUdbhhKjN--1--jwcey_2x.jpg?tr=w-1600,c-at_max";
 
-//wait for user input
-document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowUp") {
-        changeImgTo(portal.img)
-        changeTextTo(portal.text)
-    }
-})
- 
-// changeViewTo (portal)
-// changeTextTo(portalText)
 
-// deleteText()
-// addText(portalText)
 
-        // changeImgTo(object.forward.img)
-        // changeTextTo(object.forward.text)
-        // currentPage = object.forward
+//Updates all places with their connections
+startingPath.forward = portal
 
+portal.backward = startingPath
+portal.forward = forkedPath
+
+forkedPath.backward = portal
+forkedPath.left = coveredPath
+forkedPath.right = bridge
+
+coveredPath.backward = forkedPath
+coveredPath.forward = treeVillage
+
+treeVillage.backward = coveredPath
+
+bridge.backward = forkedPath
+
+
+function changeImgTo (newImg) {
+    const oldImg = document.getElementById("view");
+    oldImg.src = newImg;
+}
+
+function changeTextTo (newText) {
+    const description = document.getElementById("description");
+    const oldText = document.getElementById("text");
+    description.removeChild(oldText);
+
+    const p = document.createElement('p');
+    p.setAttribute("id", "text");
+    p.textContent = newText;
+    document.getElementById("description").append(p);
+}
 
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp") {
         changeImgTo(currentPage.forward.img);
-        changeTextTo(currentPage.forward.text);
+        if (currentPage.forward.visited === true) {
+            changeTextTo(currentPage.forward.text2);
+        }   else {
+            changeTextTo(currentPage.forward.text1);
+        }
+        currentPage.visited = true;
         currentPage = currentPage.forward;
     }
-})
+
+    if (event.key === "ArrowDown") {
+        changeImgTo(currentPage.backward.img);
+        changeTextTo(currentPage.backward.text2);
+        currentPage = currentPage.backward;
+    }
+
+    if (event.key === "ArrowLeft") {
+        changeImgTo(currentPage.left.img);
+        if (currentPage.left.visited === true) {
+            changeTextTo(currentPage.left.text2);
+        }   else {
+            changeTextTo(currentPage.left.text1);
+        }
+        currentPage.visited = true;
+        currentPage = currentPage.left;
+    }
+
+    if (event.key === "ArrowRight") {
+        changeImgTo(currentPage.right.img);
+        if (currentPage.right.visited === true) {
+            changeTextTo(currentPage.right.text2);
+        }   else {
+            changeTextTo(currentPage.right.text1);
+        }
+        currentPage.visited = true;
+        currentPage = currentPage.right;
+    }
+
+})   
+
+
+// if (currentPage === portal) {
+//     document.getElementById("welcome").remove()
+//     document.getElementById("choose").remove()
+// }
