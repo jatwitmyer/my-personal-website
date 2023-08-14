@@ -19,19 +19,33 @@ function changeTextTo (newText) {
     document.getElementById("description").append(p);
 }
 
-const currentPage = firstPath {
+const portal = {
+    img: "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg",
+    text: "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue.",
+    // backward: startingPath,
+    // forward: forkedPath,
+    // left: ,
+    // right: ,
+}
 
+const startingPath = {
+    img: "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg",
+    text: "You've made it back to a familiar path. I wonder if you'll ever see that portal again.",
+    // backward: ,
+    forward: portal,
+    // left: ,
+    // right: ,
 }
 
 
+const currentPage = startingPath
 
 
 
-    
-const firstPathImg = "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg";
 
-const portal = "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg"
-const portalText = "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue."
+
+// const portalImg = "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg"
+// const portalText = "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue."
 
 const forkedPath = "https://jkroots.com/wp-content/uploads/2018/10/enchanted_forest_2_by_jkroots-daxl6xh.jpg";
 
@@ -60,8 +74,8 @@ const swampRuins = "https://images.nightcafe.studio/jobs/pWlflDYguTfYUdbhhKjN/pW
 //wait for user input
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp") {
-        changeImgTo(portal)
-        changeTextTo(portalText)
+        changeImgTo(portal.img)
+        changeTextTo(portal.text)
     }
 })
  
@@ -70,3 +84,16 @@ document.addEventListener("keydown", function (event) {
 
 // deleteText()
 // addText(portalText)
+
+        // changeImgTo(object.forward.img)
+        // changeTextTo(object.forward.text)
+        // currentPage = object.forward
+
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowUp") {
+        changeImgTo(currentPage.forward.img);
+        changeTextTo(currentPage.forward.text);
+        currentPage = currentPage.forward;
+    }
+})
