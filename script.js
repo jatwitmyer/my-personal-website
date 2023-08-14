@@ -3,19 +3,36 @@
 
 // document.querySelector("body").appendChild(h2);
 
-function changeViewTo (newView) {
-    const oldView = document.getElementById("view");
-    oldView.src = newView;
+function changeImgTo (newImg) {
+    const oldImg = document.getElementById("view");
+    oldImg.src = newImg;
 }
 
-// changeTextTo(newText) {
-//     const oldText = document.getElementById("text")
-//     oldText.innerHTML = newText
-// }
+function changeTextTo (newText) {
+    const description = document.getElementById("description");
+    const oldText = document.getElementById("text");
+    description.removeChild(oldText);
 
-const firstPath = "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg";
+    const p = document.createElement('p');
+    p.setAttribute("id", "text");
+    p.textContent = newText;
+    document.getElementById("description").append(p);
+}
+
+const currentPage = firstPath {
+
+}
+
+
+
+
+
+    
+const firstPathImg = "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg";
+
 const portal = "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg"
-const portalText = "new description"
+const portalText = "What! Is that...a portal? Is that why the forest seems so different today? Where does it go? Do you dare find out? Press the up arrow key to continue."
+
 const forkedPath = "https://jkroots.com/wp-content/uploads/2018/10/enchanted_forest_2_by_jkroots-daxl6xh.jpg";
 
 const coveredPath = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/65282199-9f85-4daa-bcd6-de2f615bcca7/dfmb909-a1146529-df3c-4ad2-885f-89c56c667358.png/v1/fit/w_828,h_828,q_70,strp/path_through_an_enchanted_forest_version_1_by_pm_artistic_dfmb909-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzY1MjgyMTk5LTlmODUtNGRhYS1iY2Q2LWRlMmY2MTViY2NhN1wvZGZtYjkwOS1hMTE0NjUyOS1kZjNjLTRhZDItODg1Zi04OWM1NmM2NjczNTgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.60xIH9oaHILuKa4qbFpYtgunL2htU-llQmqB6hEhf6k";
@@ -43,10 +60,13 @@ const swampRuins = "https://images.nightcafe.studio/jobs/pWlflDYguTfYUdbhhKjN/pW
 //wait for user input
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp") {
-        changeViewTo(portal)
-        // changeTextTo(portalText)
+        changeImgTo(portal)
+        changeTextTo(portalText)
     }
 })
-
+ 
 // changeViewTo (portal)
 // changeTextTo(portalText)
+
+// deleteText()
+// addText(portalText)
