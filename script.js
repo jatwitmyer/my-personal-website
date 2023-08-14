@@ -8,8 +8,14 @@ function changeViewTo (newView) {
     oldView.src = newView;
 }
 
+// changeTextTo(newText) {
+//     const oldText = document.getElementById("text")
+//     oldText.innerHTML = newText
+// }
+
 const firstPath = "https://img.freepik.com/premium-photo/old-green-edge-forest-humidity-moss-trees-path-leading-through-dense-fairytale-forest_86390-10375.jpg";
 const portal = "https://as1.ftcdn.net/v2/jpg/05/40/95/08/1000_F_540950809_3FWosaP1ueYJ6QVla5SfdaAGMTPwU9gC.jpg"
+const portalText = "new description"
 const forkedPath = "https://jkroots.com/wp-content/uploads/2018/10/enchanted_forest_2_by_jkroots-daxl6xh.jpg";
 
 const coveredPath = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/65282199-9f85-4daa-bcd6-de2f615bcca7/dfmb909-a1146529-df3c-4ad2-885f-89c56c667358.png/v1/fit/w_828,h_828,q_70,strp/path_through_an_enchanted_forest_version_1_by_pm_artistic_dfmb909-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzY1MjgyMTk5LTlmODUtNGRhYS1iY2Q2LWRlMmY2MTViY2NhN1wvZGZtYjkwOS1hMTE0NjUyOS1kZjNjLTRhZDItODg1Zi04OWM1NmM2NjczNTgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.60xIH9oaHILuKa4qbFpYtgunL2htU-llQmqB6hEhf6k";
@@ -34,5 +40,13 @@ const swampVillage = "https://e0.pxfuel.com/wallpapers/609/778/desktop-wallpaper
 const swampCircle = "https://images.nightcafe.studio/jobs/8qWAPhnH1CBqk9pBaFh1/8qWAPhnH1CBqk9pBaFh1--2--9kc8q_2x.jpg?tr=w-1600,c-at_max";
 const swampRuins = "https://images.nightcafe.studio/jobs/pWlflDYguTfYUdbhhKjN/pWlflDYguTfYUdbhhKjN--1--jwcey_2x.jpg?tr=w-1600,c-at_max";
 
+//wait for user input
+document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowUp") {
+        changeViewTo(portal)
+        // changeTextTo(portalText)
+    }
+})
 
 // changeViewTo (portal)
+// changeTextTo(portalText)
