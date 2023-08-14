@@ -1,3 +1,27 @@
 body {
-    background: rgb(168, 168, 255);
+    /* background: rgb(168, 168, 255); */
+    background: #47633f;
   }
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+p {
+    width: 650px;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background: rgb(255, 255, 255, .5);
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    padding-bottom: 15px;
+}
+
