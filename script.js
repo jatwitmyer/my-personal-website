@@ -227,3 +227,11 @@ document.addEventListener("keydown", function (event) {
 //     document.getElementById("welcome").remove()
 //     document.getElementById("choose").remove()
 // }
+
+
+if (Boolean(document.getElementById("titleScreen"))) {
+    document.addEventListener("keyup", function (event) {
+        div = document.getElementById("titleScreen")
+        div.remove()
+    })}
+
