@@ -22,20 +22,23 @@ const forkedPath = {
 const shadyPath = {
     visited: false,
     img: "https://png.pngtree.com/background/20230616/original/pngtree-fantasy-fairytale-magical-forest-sunny-evening-light-through-the-branches-painting-picture-image_3635587.jpg",
-    firstVisit: "Press up to follow the path. Press right to enter the forest. Press down to return to the cairn.",
-    secondVisit: "Press up to follow the path away from the portal. Press right to enter the forest. Press down to return to the cairn.",
+    firstVisit: "The forest is filled with fog, but you can make out a path in front of you. Press up to follow the path...or you could take your chances with the forest. Press right to explore the forest. Press down to return to the cairn.",
+    secondVisit: "Press up to follow the path away from the portal. Press right to explore the forest. Press down to return to the cairn.",
 }
 const coveredPath = {
     visited: false,
     img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/65282199-9f85-4daa-bcd6-de2f615bcca7/dfmb909-a1146529-df3c-4ad2-885f-89c56c667358.png/v1/fit/w_828,h_828,q_70,strp/path_through_an_enchanted_forest_version_1_by_pm_artistic_dfmb909-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzY1MjgyMTk5LTlmODUtNGRhYS1iY2Q2LWRlMmY2MTViY2NhN1wvZGZtYjkwOS1hMTE0NjUyOS1kZjNjLTRhZDItODg1Zi04OWM1NmM2NjczNTgucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.60xIH9oaHILuKa4qbFpYtgunL2htU-llQmqB6hEhf6k",
-    firstVisit: "Press up to continue. Press down to return to the foggy path.",
+    firstVisit: "The trees here have been shaped into arches and the path stretches out in front of you as far as you can see. Press up to continue. Press down to return to the foggy path.",
     secondVisit: "Press up to follow the path away from the portal. Press down to return to the foggy path.",
 }
 const treeVillage = {
+    name: "treeVillage",
     visited: false,
     img: "https://wallpapers.com/images/hd/mystical-forest-1920-x-1200-zggop07wd2gh8vmg.jpg",
-    firstVisit: "Press down to return to the tree arch path.",
-    secondVisit: "Press down to return to the tree arch path.",
+    firstVisit: "Out from the trees, stretches a magnificent village. Perhaps someone here could tell you where you are. Press down to return to the path toward the portal.",
+    secondVisit: "Press down to return to the path toward the portal.",
+    // firstVisit: "Out from the trees, stretches a magnificent village. Perhaps someone here could tell you where you are. Press e to explore. Press down to return to the path toward the portal.",
+    // secondVisit: "Press e to explore. Press down to return to the path toward the portal.",
 }
 
 //right from covered path
@@ -230,3 +233,13 @@ if (Boolean(document.getElementById("titleScreen"))) {
         div = document.getElementById("titleScreen")
         div.remove()
     })}
+
+// setting up possibility for a quest. doesn't function
+// talkedToMoira = true
+// if (currentPage.name === "treeVillage") { //would have to give all of them a name attribute
+//     if (talkedToMoira === true) {
+//         questDiv = document.getElementById("quest")
+//         p = document.createElement("p")
+//         questDiv.append(p)
+//     }
+// }
